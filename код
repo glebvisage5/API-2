@@ -44,8 +44,6 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((600, 450))
     mp = MapParams()
-    map_file = load_map(mp)
-    screen.blit(pygame.image.load(map_file), (0, 0))
     while True:
         event = pygame.event.wait()
         if event.type == pygame.QUIT:
@@ -53,6 +51,8 @@ def main():
         elif event.type == pygame.KEYDOWN:
             mp.update(event)
         pygame.display.flip()
+        map_file = load_map(mp)
+        screen.blit(pygame.image.load(map_file), (0, 0))
     pygame.quit()
     os.remove(map_file)
 
